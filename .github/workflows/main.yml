@@ -17,6 +17,8 @@ on:
 jobs:
   build-dart-sdk:
     runs-on: ubuntu-latest
+    permissions: write-all
+
     steps:
     - name: Maximize build space
       uses: easimon/maximize-build-space@v4
@@ -87,5 +89,5 @@ jobs:
       with:
         artifacts: "dart-sdk/sdk/out/*.zip"
         tag: Dart-SDK-${{ steps.date.outputs.date }}
-        token: ${{ secrets.RELEASE_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
